@@ -3,6 +3,15 @@ ruby '2.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 gem 'devise'
+gem 'rolify'
+gem 'cancan'
+gem 'friendly_id', '~> 5.0.0'
+gem 'acts-as-taggable-on'
+gem "geocoder"
+gem "gmaps4rails"
+gem "rails_admin"
+gem 'acts_as_votable', '~> 0.8.0'
+gem 'will_paginate', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

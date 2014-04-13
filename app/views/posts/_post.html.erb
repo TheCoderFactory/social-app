@@ -1,0 +1,22 @@
+
+    <div class="well post">
+      <p>
+        <strong><%= post.title %></strong>
+      </p>
+      <p><small>Posted on <%= post.created_at.strftime('%b %d, %Y at %I:%M %p') %></small></p>
+      <hr>
+      <p><%= post.content %></p>
+      <hr>
+      <% if user_signed_in? %>
+	      <span id="like">
+	      	<% if !current_user.voted_for? post %>
+	      		<%= link_to 'Like', like_post_path(post: post), class: 'btn btn-success', remote: true %>
+	      	<% else %>
+	      		<%= link_to 'Unlike', unlike_post_path(post: post), class: 'btn btn-default', remote: true %>
+	      	<% end %>
+	      </span>
+	    <% end %>
+      <hr>
+      Likes: <span class="badge" id="likes"><%= post.votes.size %></span>
+
+    </div>

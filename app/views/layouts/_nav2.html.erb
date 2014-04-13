@@ -1,0 +1,31 @@
+<div class="header">
+  <div class="container">
+    <h1>The Startup Community</h1>
+    <ul class="nav nav-pills pull-right">
+      <li class="active"><a href="#">Home</a></li>
+      <li><%= link_to "User Profiles", user_profiles_path %></li>
+      <li><%= link_to "Business Profiles", business_profiles_path %></li>
+      <li><%= link_to "My Profile", user_profile_path(current_user.user_profile) %></li>
+      <% if user_signed_in? %>
+          <li>
+            <%= link_to destroy_user_session_path, :method=>'delete' do %>
+              <i class="icon-sign-out"></i> Logout
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <i class="icon-user"></i> My account
+            <% end %>
+          </li>
+
+        <% else %>
+          <li>
+            <%= link_to 'Login', new_user_session_path %>
+          </li>
+          <li>
+            <%= link_to 'Sign up', new_user_registration_path %>
+          </li>
+        <% end %>
+    </ul>
+  </div>
+</div>

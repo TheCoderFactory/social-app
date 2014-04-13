@@ -1,0 +1,88 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="panel panel-info">
+			<div class="panel-heading">	
+				<h2 class="panel-title">My account</h2>
+			</div>
+			<div class="panel-body">
+				<p>Email: <%= @user.email %></p>
+				<br>
+				<%= link_to "Change Username/Password", edit_user_registration_path, class: 'btn btn-warning' %>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-5">
+		<div class="panel panel-info">
+			<div class="panel-heading">	
+				<h2 class="panel-title">My profile</h2>
+			</div>
+			<div class="panel-body">
+				<%= image_tag @user.user_profile.image, class: 'img-thumbnail', width: '200px' %>
+				<table class="table table-hover">
+					<tr>
+						<th>About:</th>
+						<td><%= @user.user_profile.about %></td>
+					</tr>
+					<tr>
+						<th>Tagline:</th>
+						<td><%= @user.user_profile.tagline %></td>
+					</tr>
+					<tr>
+						<th>Email:</th>
+						<td><%= @user.user_profile.email %></td>
+					</tr>
+					<tr>
+						<th>Phone:</th>
+						<td><%= @user.user_profile.phone %></td>
+					</tr>
+					<tr>
+						<th>Website:</th>
+						<td><%= @user.user_profile.url %></td>
+					</tr>
+					<tr>
+						<th>Twitter:</th>
+						<td><%= @user.user_profile.twitter %></td>
+					</tr>
+					<tr>
+						<th>Facebook:</th>
+						<td><%= @user.user_profile.facebook %></td>
+					</tr>
+					<tr>
+						<th>Google+:</th>
+						<td><%= @user.user_profile.google %></td>
+					</tr>
+					<tr>
+						<th>LinkedIn:</th>
+						<td><%= @user.user_profile.linkedin %></td>
+					</tr>
+					<tr>
+						<th>Github:</th>
+						<td><%= @user.user_profile.github %></td>
+					</tr>
+
+				</table>
+				<br>
+				<%= link_to "Edit profile", edit_user_profile_path(@user.user_profile), class: 'btn btn-warning' %> 
+				<%= link_to "View profile", user_profile_path(@user.user_profile), class: 'btn btn-success' %>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<h2>My businesses</h2>
+		<% if @user.business_profiles %>
+			<% @user.business_profiles.each do |business_profile| %>
+				<p><%= link_to business_profile.name, business_profile %></p>
+			<% end %>
+		<% end %>
+		<hr>
+		<%= link_to "Add business profile", new_business_profile_path, class: 'btn btn-success' %>
+	</div>
+</div>
+
+
+
+
+
+

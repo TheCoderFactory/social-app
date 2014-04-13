@@ -1,0 +1,130 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+<div class="col-md-4">
+  <p>
+    <strong>Name:</strong>
+    <%= @user_profile.name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @user_profile.email %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= @user_profile.phone %>
+  </p>
+
+  <p>
+    <strong>Tagline:</strong>
+    <%= @user_profile.tagline %>
+  </p>
+
+  <p>
+    <strong>About:</strong>
+    <%= @user_profile.about %>
+  </p>
+
+  <p>
+    <strong>Url:</strong>
+    <%= @user_profile.url %>
+  </p>
+
+  <p>
+    <strong>Blog:</strong>
+    <%= @user_profile.blog %>
+  </p>
+
+  <p>
+    <strong>Twitter:</strong>
+    <%= @user_profile.twitter %>
+  </p>
+
+  <p>
+    <strong>Facebook:</strong>
+    <%= @user_profile.facebook %>
+  </p>
+
+  <p>
+    <strong>Linkedin:</strong>
+    <%= @user_profile.linkedin %>
+  </p>
+
+  <p>
+    <strong>Google:</strong>
+    <%= @user_profile.google %>
+  </p>
+
+  <p>
+    <strong>Github:</strong>
+    <%= @user_profile.github %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <%= @user_profile.image %>
+  </p>
+
+  <%= link_to 'Edit', edit_user_profile_path(@user_profile) %> |
+  <%= link_to 'Back', user_profiles_path %>
+
+</div>
+<div class="col-md-4">
+  <h2>
+    My Posts (<span id="posts_count"><%= @user_profile.user.posts.count %></span>)
+  </h2>
+  <h3>New post:</h3>
+    <%= simple_form_for(@post, remote: true) do |f| %>
+      <%= f.error_notification %>
+        <div class="form-group">
+          <%= f.input :title, input_html: { class: "form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.input :content, label: 'Post', input_html: { class: "form-control"} %>
+        </div>
+        <%= f.button :submit %>
+    <% end %>
+    <hr>
+    <h3>Previous posts:</h3>
+    <% if @posts %>
+      <div id="posts">
+        <%= render @posts %>
+       </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+
+    <div class="stats">
+      <a href="<%= following_user_path(@user_profile.user) %>" class="btn btn-lg btn-warning">
+        <strong id="following" class="stat">
+        Following 
+          <span class="badge"><%= @user_profile.user.followed_users.count %></span> users
+        </strong>
+
+      </a>
+      </p>
+      <a href="<%= followers_user_path(@user_profile.user) %>" class="btn btn-lg btn-warning">
+        <strong class="stat">
+        Followed by
+          <span class="badge" id="followers"><%= @user_profile.user.followers.count %></span> users
+        </strong>
+
+      </a>
+    </div>
+  <br>
+  <div class="follow_unfollow">
+  <% unless current_user == @user_profile.user %>
+    <div id="follow_form">
+    <% if current_user.following?(@user_profile.user) %>
+      <%= render 'unfollow' %>
+    <% else %>
+      <%= render 'follow' %>
+    <% end %>
+    </div>
+  <% end %>
+  </div>
+  </div>
+  
+</div>

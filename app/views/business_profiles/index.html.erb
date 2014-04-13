@@ -1,0 +1,63 @@
+<h1>Listing business_profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Tagline</th>
+      <th>About</th>
+      <th>Url</th>
+      <th>Blog</th>
+      <th>Twitter</th>
+      <th>Facebook</th>
+      <th>Linkedin</th>
+      <th>Google</th>
+      <th>Github</th>
+      <th>Image</th>
+      <th>Slug</th>
+      <th>Employees</th>
+      <th>Hiring</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Owner</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @business_profiles.each do |business_profile| %>
+      <tr>
+        <td><%= business_profile.name %></td>
+        <td><%= business_profile.email %></td>
+        <td><%= business_profile.phone %></td>
+        <td><%= business_profile.tagline %></td>
+        <td><%= business_profile.about %></td>
+        <td><%= business_profile.url %></td>
+        <td><%= business_profile.blog %></td>
+        <td><%= business_profile.twitter %></td>
+        <td><%= business_profile.facebook %></td>
+        <td><%= business_profile.linkedin %></td>
+        <td><%= business_profile.google %></td>
+        <td><%= business_profile.github %></td>
+        <td><%= business_profile.image %></td>
+        <td><%= business_profile.slug %></td>
+        <td><%= business_profile.employees %></td>
+        <td><%= business_profile.hiring %></td>
+        <td><%= business_profile.latitude %></td>
+        <td><%= business_profile.longitude %></td>
+        <td><%= business_profile.owner %></td>
+        <td><%= link_to 'Show', business_profile %></td>
+        <td><%= link_to 'Edit', edit_business_profile_path(business_profile) %></td>
+        <td><%= link_to 'Destroy', business_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Business profile', new_business_profile_path %>

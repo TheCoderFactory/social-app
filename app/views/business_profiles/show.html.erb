@@ -1,0 +1,112 @@
+<p id="notice"><%= notice %></p>
+
+<h2>People in this business</h2>
+<% @business_profile.users.each do |user| %>
+  <p><%= user.user_profile.name %></p>
+<% end %>
+
+<% if user_signed_in? %>
+  <% if !@business_profile.users.include?(current_user) %>
+    <%= link_to "I work here", join_business_profile_path(@business_profile), class: 'btn btn-info' %>
+  <% else %>
+    <%= link_to "I no longer work here", leave_business_profile_path(@business_profile), class: 'btn btn-danger' %>
+  <% end %>
+<% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @business_profile.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @business_profile.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @business_profile.phone %>
+</p>
+
+<p>
+  <strong>Tagline:</strong>
+  <%= @business_profile.tagline %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @business_profile.about %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @business_profile.url %>
+</p>
+
+<p>
+  <strong>Blog:</strong>
+  <%= @business_profile.blog %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @business_profile.twitter %>
+</p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @business_profile.facebook %>
+</p>
+
+<p>
+  <strong>Linkedin:</strong>
+  <%= @business_profile.linkedin %>
+</p>
+
+<p>
+  <strong>Google:</strong>
+  <%= @business_profile.google %>
+</p>
+
+<p>
+  <strong>Github:</strong>
+  <%= @business_profile.github %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @business_profile.image %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @business_profile.slug %>
+</p>
+
+<p>
+  <strong>Employees:</strong>
+  <%= @business_profile.employees %>
+</p>
+
+<p>
+  <strong>Hiring:</strong>
+  <%= @business_profile.hiring %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @business_profile.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @business_profile.longitude %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= User.find(@business_profile.owner).user_profile.name %>
+</p>
+
+<%= link_to 'Edit', edit_business_profile_path(@business_profile) %> |
+<%= link_to 'Back', business_profiles_path %>

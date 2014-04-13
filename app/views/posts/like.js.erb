@@ -1,0 +1,2 @@
+$("#likes").html('<%= @post.votes.size %>')
+$("#like").html("<%= link_to 'Unlike', unlike_post_path(post: post), class: 'btn btn-default', remote: true %>")
